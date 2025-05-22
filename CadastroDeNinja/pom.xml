@@ -12,7 +12,7 @@
 	<artifactId>CadastroDeNinja</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CadastroDeNinja</name>
-	<description>Uma API para cadastro de Ninjas</description>
+	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
