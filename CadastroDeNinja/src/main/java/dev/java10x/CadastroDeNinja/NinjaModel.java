@@ -1,11 +1,22 @@
 package dev.java10x.CadastroDeNinja;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity // Ele transforma uma classe em uma entidade do banco de dados
+@Table(name = "tb_cadastro_de_ninjas")
 public class NinjaModel {
 
-  Long id;
-  String nome;
-  String email;
-  int idade;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  private String nome;
+  private String email;
+  private int idade;
 
   /**
    * Construtor sem argumentos (No-arg).
