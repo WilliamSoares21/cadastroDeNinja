@@ -8,9 +8,23 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Ele transforma uma classe em uma entidade do banco de dados
 @Table(name = "tb_cadastro_de_ninjas")
+@NoArgsConstructor // Gera um construtor sem argumentos (No-arg constructor) automaticamente
+// O @NoArgsConstructor é útil para frameworks como Hibernate, que precisam de um construtor padrão para criar instâncias da classe
+// sem precisar de argumentos. Isso é especialmente importante em operações de persistência, onde o Hibernate pode precisar instanciar a classe antes de preencher os campos.
+@AllArgsConstructor // Gera um construtor com todos os argumentos (Args constructor) automaticamente
+// O @AllArgsConstructor é útil para criar instâncias da classe com todos os campos preenchidos de uma só vez.
+// Isso é útil para inicializar objetos com todos os dados necessários em uma única chamada de construtor.
+// Isso é especialmente útil em testes ou quando você tem certeza de que todos os campos devem ser preenchidos ao criar a instância.
+@Data // Gera automaticamente os métodos getters, setters, equals, hashCode e toString para a classe
+// O @Data é uma anotação do Lombok que reduz a quantidade de código boilerplate necessário para criar classes Java.
+// Ele gera automaticamente os métodos getters e setters para todos os campos, além de equals, hashCode e toString.
+// Isso torna o código mais limpo e fácil de ler, além de reduzir a quantidade de código que você precisa escrever manualmente.
 public class NinjaModel {
 
   @Id
@@ -27,51 +41,4 @@ public class NinjaModel {
   // Isso significa que a tabela de ninjas terá uma coluna que referencia a missão
   // Isso é útil para evitar redundância e manter a integridade referencial no banco de dados
   private MissoesModel missoes;
-  /**
-   * Construtor sem argumentos (No-arg).
-   * Cria um NinjaModel com valores padrão (ou nulos/zeros).
-   * Útil para criar objetos e definir valores depois.
-   */
-  public NinjaModel() {
-    // Inicialização padrão pode ser feita aqui.
-  }
-
-  /**
-   * Construtor com argumentos (Args).
-   * Cria um NinjaModel com nome, email e idade especificados.
-   * Garante que o objeto seja criado com dados iniciais.
-   * 
-   * @param nome  Nome do ninja.
-   * @param email Email do ninja.
-   * @param idade Idade do ninja.
-   */
-  public NinjaModel(String nome, String email, int idade) {
-    this.nome = nome;
-    this.email = email;
-    this.idade = idade;
-  }
-
-  public String getNome() {
-    return nome;
-  }
-
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public int getIdade() {
-    return idade;
-  }
-
-  public void setIdade(int idade) {
-    this.idade = idade;
-  }
 }
